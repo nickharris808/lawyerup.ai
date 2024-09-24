@@ -1,0 +1,119 @@
+{
+    "type": "object",
+    "properties": {
+      "client_name": { "type": "string" },
+      "incident_date": { "type": "string", "format": "date" },
+      "contact_info": { "type": "string" },
+      "incident_overview": { "type": "string" },
+      "key_findings": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "estimated_compensation": {
+        "type": "object",
+        "properties": {
+          "economic_damages": { "type": "number" },
+          "non_economic_damages": { "type": "number" },
+          "punitive_damages": { "type": "number" }
+        },
+        "required": ["economic_damages", "non_economic_damages", "punitive_damages"],
+        "additionalProperties": false
+      },
+      "applicable_laws": { "type": "string" },
+      "precedent_cases": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "case_name": { "type": "string" },
+            "outcome": { "type": "string" }
+          },
+          "required": ["case_name", "outcome"],
+          "additionalProperties": false
+        }
+      },
+      "strength_of_case": { "type": "string" },
+      "legal_arguments": {
+        "type": "object",
+        "properties": {
+          "liability_assessment": { "type": "string" },
+          "negligence_elements": { "type": "string" },
+          "counterarguments": { "type": "string" }
+        },
+        "required": ["liability_assessment", "negligence_elements", "counterarguments"],
+        "additionalProperties": false
+      },
+      "supporting_evidence": {
+        "type": "object",
+        "properties": {
+          "medical_insights": { "type": "string" },
+          "technical_analysis": { "type": "string" },
+          "documentation_needed": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["medical_insights", "technical_analysis", "documentation_needed"],
+        "additionalProperties": false
+      },
+      "case_valuation": {
+        "type": "object",
+        "properties": {
+          "valuation_methodology": { "type": "string" },
+          "factors_influencing": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["valuation_methodology", "factors_influencing"],
+        "additionalProperties": false
+      },
+      "next_steps": {
+        "type": "object",
+        "properties": {
+          "action_plan": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "documentation_needed": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "consultation_recommendation": { "type": "string" }
+        },
+        "required": ["action_plan", "documentation_needed", "consultation_recommendation"],
+        "additionalProperties": false
+      },
+      "client_questions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "question": { "type": "string" },
+            "answer": { "type": "string" }
+          },
+          "required": ["question", "answer"],
+          "additionalProperties": false
+        }
+      },
+      "confidentiality_notice": { "type": "string" }
+    },
+    "required": [
+      "client_name",
+      "incident_date",
+      "incident_overview",
+      "key_findings",
+      "estimated_compensation",
+      "applicable_laws",
+      "precedent_cases",
+      "strength_of_case",
+      "legal_arguments",
+      "supporting_evidence",
+      "case_valuation",
+      "next_steps",
+      "client_questions",
+      "confidentiality_notice"
+    ],
+    "additionalProperties": false
+  }
+  
