@@ -1,1 +1,270 @@
-<!-- This file is intentionally left empty -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Legal Report for {{ client_name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            color: #2E2E2E;
+        }
+        h1, h2, h3 {
+            color: #2E4053;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+        }
+        h2 {
+            border-bottom: 2px solid #2E4053;
+            padding-bottom: 10px;
+            margin-top: 50px;
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .subsection {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .table-of-contents {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .table-of-contents ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .table-of-contents li {
+            margin-bottom: 5px;
+        }
+        .confidentiality-notice {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 50px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        p {
+            text-align: justify;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 40px;
+        }
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .date-prepared {
+            margin-top: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title Page -->
+    <h1>Legal Report</h1>
+    <div style="text-align: center;">
+        <p><strong>Client Name:</strong> {{ client_name }}</p>
+        <p><strong>Incident Date:</strong> {{ incident_date }}</p>
+        {% if contact_info %}
+        <p><strong>Contact Information:</strong> {{ contact_info }}</p>
+        {% endif %}
+        <p class="date-prepared"><strong>Date Prepared:</strong> {{ current_date }}</p>
+    </div>
+
+    <!-- Page Break -->
+    <div class="page-break"></div>
+
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li>1. Incident Overview</li>
+            <li>2. Key Findings</li>
+            <li>3. Estimated Compensation</li>
+            <li>4. Applicable Laws and Statutes</li>
+            <li>5. Precedent Cases</li>
+            <li>6. Strength of Case</li>
+            <li>7. Legal Arguments</li>
+            <li>8. Supporting Evidence</li>
+            <li>9. Case Valuation</li>
+            <li>10. Next Steps</li>
+            <li>11. Client Questions</li>
+        </ul>
+    </div>
+
+    <!-- Page Break -->
+    <div class="page-break"></div>
+
+    <!-- 1. Incident Overview -->
+    <div class="section">
+        <h2>1. Incident Overview</h2>
+        <p>{{ incident_overview }}</p>
+    </div>
+
+    <!-- 2. Key Findings -->
+    <div class="section">
+        <h2>2. Key Findings</h2>
+        <ul>
+            {% for finding in key_findings %}
+                <li>{{ finding }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- 3. Estimated Compensation -->
+    <div class="section">
+        <h2>3. Estimated Compensation</h2>
+        <p><strong>Economic Damages:</strong> ${{ '{:,.2f}'.format(economic_damages) }}</p>
+        <p><strong>Non-Economic Damages:</strong> ${{ '{:,.2f}'.format(non_economic_damages) }}</p>
+        <p><strong>Punitive Damages:</strong> ${{ '{:,.2f}'.format(punitive_damages) }}</p>
+    </div>
+
+    <!-- 4. Applicable Laws and Statutes -->
+    <div class="section">
+        <h2>4. Applicable Laws and Statutes</h2>
+        <p>{{ applicable_laws }}</p>
+    </div>
+
+    <!-- 5. Precedent Cases -->
+    <div class="section">
+        <h2>5. Precedent Cases</h2>
+        {% for case in precedent_cases %}
+            <div class="subsection">
+                <p><strong>{{ case.case_name }}</strong></p>
+                <p>{{ case.outcome }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- 6. Strength of Case -->
+    <div class="section">
+        <h2>6. Strength of Case</h2>
+        <p>{{ strength_of_case }}</p>
+    </div>
+
+    <!-- 7. Legal Arguments -->
+    <div class="section">
+        <h2>7. Legal Arguments</h2>
+        <div class="subsection">
+            <h3>Liability Assessment</h3>
+            <p>{{ legal_arguments.liability_assessment }}</p>
+        </div>
+        <div class="subsection">
+            <h3>Negligence Elements</h3>
+            <p>{{ legal_arguments.negligence_elements }}</p>
+        </div>
+        <div class="subsection">
+            <h3>Counterarguments</h3>
+            <p>{{ legal_arguments.counterarguments }}</p>
+        </div>
+    </div>
+
+    <!-- 8. Supporting Evidence -->
+    <div class="section">
+        <h2>8. Supporting Evidence</h2>
+        {% if supporting_evidence %}
+            <div class="subsection">
+                <h3>Medical Insights</h3>
+                <p>{{ supporting_evidence.medical_insights }}</p>
+            </div>
+            <div class="subsection">
+                <h3>Technical Analysis</h3>
+                <p>{{ supporting_evidence.technical_analysis }}</p>
+            </div>
+            <div class="subsection">
+                <h3>Documentation Needed</h3>
+                <ul>
+                    {% for doc in supporting_evidence.documentation_needed %}
+                        <li>{{ doc }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <p>No supporting evidence provided.</p>
+        {% endif %}
+    </div>
+
+    <!-- 9. Case Valuation -->
+    <div class="section">
+        <h2>9. Case Valuation</h2>
+        <div class="subsection">
+            <h3>Valuation Methodology</h3>
+            <p>{{ case_valuation.valuation_methodology }}</p>
+        </div>
+        <div class="subsection">
+            <h3>Factors Influencing Case Value</h3>
+            <ul>
+                {% for factor in case_valuation.factors_influencing %}
+                    <li>{{ factor }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- 10. Next Steps -->
+    <div class="section">
+        <h2>10. Next Steps</h2>
+        {% if next_steps %}
+            <div class="subsection">
+                <h3>Action Plan</h3>
+                <ul>
+                    {% for step in next_steps.action_plan %}
+                        <li>{{ step }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>Documentation Needed</h3>
+                <ul>
+                    {% for doc in next_steps.documentation_needed %}
+                        <li>{{ doc }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>Consultation Recommendation</h3>
+                <p>{{ next_steps.consultation_recommendation }}</p>
+            </div>
+        {% else %}
+            <p>No next steps provided.</p>
+        {% endif %}
+    </div>
+
+    <!-- 11. Client Questions -->
+    <div class="section">
+        <h2>11. Client Questions</h2>
+        {% if client_questions %}
+            {% for qa in client_questions %}
+                <div class="subsection">
+                    <p><strong>Question:</strong> {{ qa.question }}</p>
+                    <p><strong>Answer:</strong> {{ qa.answer }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No client questions provided.</p>
+        {% endif %}
+    </div>
+
+    <!-- Confidentiality Notice -->
+    <div class="confidentiality-notice">
+        <p>{{ confidentiality_notice }}</p>
+    </div>
+
+</body>
+</html>
