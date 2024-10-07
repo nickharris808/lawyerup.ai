@@ -149,7 +149,7 @@ def create_checkout_session():
 
 def process_image(image, case_details):
     """
-    Sends the image to OpenAI GPT-4 Vision API and returns the description.
+    Sends the image to OpenAI gpt-4o-mini-2024-07-18 Vision API and returns the description.
     """
     try:
         # Convert image to bytes
@@ -161,7 +161,7 @@ def process_image(image, case_details):
         # Create the prompt
         prompt = f"What's happening in this image in regards to this case: {case_details}"
         
-        # Placeholder for OpenAI GPT-4 Vision API call
+        # Placeholder for OpenAI gpt-4o-mini-2024-07-18 Vision API call
         # Replace with the actual API call as per OpenAI's documentation
         # For example purposes, we'll simulate the response
         response = openai.Image.create(
@@ -210,7 +210,7 @@ def summarize_document(document, case_details):
         """
         
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini-2024-07-18",
             messages=[
                 {"role": "system", "content": "You are a helpful legal assistant."},
                 {"role": "user", "content": prompt}
@@ -355,7 +355,7 @@ def generate_report(user_inputs, document_summaries, image_descriptions, case_la
         """
     
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini-2024-07-18",
             messages=[
                 {"role": "system", "content": "You are a helpful legal assistant."},
                 {"role": "user", "content": prompt}
@@ -499,7 +499,7 @@ def generate_pdf(report):
 
 def analyze_uploaded_images(images, case_details):
     """
-    Processes each uploaded image using OpenAI's GPT-4 Vision API.
+    Processes each uploaded image using OpenAI's gpt-4o-mini-2024-07-18 Vision API.
     Returns a list of descriptions.
     """
     descriptions = []
@@ -511,7 +511,7 @@ def analyze_uploaded_images(images, case_details):
 
 def summarize_uploaded_documents(documents, case_details):
     """
-    Processes each uploaded document using OpenAI's GPT-4 API.
+    Processes each uploaded document using OpenAI's gpt-4o-mini-2024-07-18 API.
     Returns a list of summaries.
     """
     summaries = []
